@@ -30,6 +30,9 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      <head>
+        <script defer src="https://cloud.umami.is/script.js" data-website-id="e698fc8f-2ee4-4a82-ab7d-253348070533"></script>
+      </head>
       <body className="min-h-full flex flex-col">
         <Navbar />
         {children}
