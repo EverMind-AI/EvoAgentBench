@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 const HF_URL = "https://huggingface.co/datasets/EverMind-AI/EvoAgentBench";
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 export function Navbar() {
   return (
@@ -16,24 +17,24 @@ export function Navbar() {
           >
             Leaderboard
           </Link>
-          <Link
-            href="/#results"
+          <a
+            href={`${BASE}/#results`}
             className="text-muted-foreground hover:text-foreground transition-colors"
           >
             Results
-          </Link>
-          <Link
-            href="/#domains"
+          </a>
+          <a
+            href={`${BASE}/#domains`}
             className="text-muted-foreground hover:text-foreground transition-colors"
           >
             Domains
-          </Link>
-          <Link
-            href="/#methods"
+          </a>
+          <a
+            href={`${BASE}/#methods`}
             className="text-muted-foreground hover:text-foreground transition-colors"
           >
             Self-Evolution
-          </Link>
+          </a>
 
           <span className="h-4 w-px bg-border" />
 

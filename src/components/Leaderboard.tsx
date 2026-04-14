@@ -132,11 +132,7 @@ export function Leaderboard({ compact = false }: { compact?: boolean }) {
   }, [agentFilter, domainFilter, methodFilter, sortBy]);
 
   const maxBarValue = Math.max(
-    ...filtered.map((d) => {
-      if (sortBy === "delta") return Math.abs(d.withSkills - d.without);
-      if (sortBy === "without") return d.without;
-      return d.withSkills;
-    }),
+    ...filtered.map((d) => Math.abs(d.withSkills - d.without)),
     1
   );
 
@@ -301,7 +297,7 @@ export function Leaderboard({ compact = false }: { compact?: boolean }) {
           <TableBody>
             {displayData.map((row, i) => {
               const delta = row.withSkills - row.without;
-              const barValue = sortBy === "delta" ? Math.abs(delta) : sortBy === "without" ? row.without : row.withSkills;
+              const barValue = Math.abs(delta);
               const barWidth = (barValue / maxBarValue) * 100;
               const deltaColor = delta >= 0 ? "text-emerald-600" : "text-red-500";
               const deltaStr = delta >= 0 ? `+${delta.toFixed(1)}` : delta.toFixed(1);
