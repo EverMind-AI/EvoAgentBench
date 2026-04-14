@@ -16,7 +16,7 @@ export default function LeaderboardPage() {
           <p className="text-sm text-muted-foreground">
             Pass rates on{" "}
             <span className="font-semibold text-foreground">EvoAgentBench</span>{" "}
-            · 5 domains · EverOS skill extraction
+            · 5 domains · multiple self-evolution methods
           </p>
           <p className="text-xs text-muted-foreground mt-1">
             Partial results. More agents, domains, and methods coming soon.

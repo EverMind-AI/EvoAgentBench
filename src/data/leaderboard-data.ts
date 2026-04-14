@@ -7,7 +7,7 @@ export type Domain =
   | "LiveCode"
   | "GDPVal";
 
-export type SkillMethod = "EverOS" | "Human";
+export type SkillMethod = "EverOS" | "Human Design";
 
 export interface LeaderboardEntry {
   agent: Agent;
@@ -29,7 +29,7 @@ export const DOMAINS: Domain[] = [
   "GDPVal",
 ];
 
-export const SKILL_METHODS: SkillMethod[] = ["EverOS", "Human"];
+export const SKILL_METHODS: SkillMethod[] = ["EverOS", "Human Design"];
 
 export const AGENT_COLORS: Record<Agent, string> = {
   OpenClaw: "#ef4444",
@@ -59,7 +59,7 @@ export const DOMAIN_TAG_COLORS: Record<Domain, { bg: string; text: string }> = {
 
 export const SKILL_METHOD_TAG_COLORS: Record<SkillMethod, { bg: string; text: string }> = {
   EverOS: { bg: "#d1fae5", text: "#065f46" },
-  Human: { bg: "#e0f2fe", text: "#0369a1" },
+  "Human Design": { bg: "#e0f2fe", text: "#0369a1" },
 };
 
 // --- Domain descriptions (from README) ---
@@ -146,7 +146,7 @@ export interface AllMethodInfo {
 
 export const ALL_METHODS: AllMethodInfo[] = [
   {
-    name: "EverMemOS",
+    name: "EverOS",
     description: "A memory OS that makes agents more personal while saving tokens. Extracts and stores long-term memory from session trajectories, then injects reusable skills as domain-specific strategies.",
     approach: "Memory-based extraction",
     github: "https://github.com/EverMind-AI/EverOS",
@@ -197,10 +197,10 @@ export const leaderboardData: LeaderboardEntry[] = [
   { agent: "OpenClaw", model: "Qwen3.5-27B",  domain: "SWE-Bench",      skillMethod: "EverOS", without: 11.5, withSkills: 38.5, efficiency: "↑ 41.2% turns" },
 
   // OpenClaw + Human Design
-  { agent: "OpenClaw", model: "Qwen3.5-397B", domain: "OmniMath",  skillMethod: "Human", without: 45.0, withSkills: 60.0, efficiency: "↑ 2.7% chars" },
-  { agent: "OpenClaw", model: "Qwen3.5-27B",  domain: "OmniMath",  skillMethod: "Human", without: 37.0, withSkills: 29.0, efficiency: "↓ 13.0% chars" },
-  { agent: "OpenClaw", model: "Qwen3.5-397B", domain: "SWE-Bench", skillMethod: "Human", without: 26.9, withSkills: 61.5, efficiency: "↓ 0.5% turns" },
-  { agent: "OpenClaw", model: "Qwen3.5-27B",  domain: "SWE-Bench", skillMethod: "Human", without: 11.5, withSkills: 38.5, efficiency: "↑ 62.5% turns" },
-  { agent: "OpenClaw", model: "Qwen3.5-397B", domain: "BrowseCompPlus", skillMethod: "Human", without: 32.3, withSkills: 55.4, efficiency: "—" },
-  { agent: "OpenClaw", model: "Qwen3.5-27B",  domain: "BrowseCompPlus", skillMethod: "Human", without: 30.8, withSkills: 35.4, efficiency: "—" },
+  { agent: "OpenClaw", model: "Qwen3.5-397B", domain: "OmniMath",  skillMethod: "Human Design", without: 45.0, withSkills: 60.0, efficiency: "↑ 2.7% chars" },
+  { agent: "OpenClaw", model: "Qwen3.5-27B",  domain: "OmniMath",  skillMethod: "Human Design", without: 37.0, withSkills: 29.0, efficiency: "↓ 13.0% chars" },
+  { agent: "OpenClaw", model: "Qwen3.5-397B", domain: "SWE-Bench", skillMethod: "Human Design", without: 26.9, withSkills: 61.5, efficiency: "↓ 0.5% turns" },
+  { agent: "OpenClaw", model: "Qwen3.5-27B",  domain: "SWE-Bench", skillMethod: "Human Design", without: 11.5, withSkills: 38.5, efficiency: "↑ 62.5% turns" },
+  { agent: "OpenClaw", model: "Qwen3.5-397B", domain: "BrowseCompPlus", skillMethod: "Human Design", without: 32.3, withSkills: 55.4, efficiency: "↓ 21.8% turns" },
+  { agent: "OpenClaw", model: "Qwen3.5-27B",  domain: "BrowseCompPlus", skillMethod: "Human Design", without: 30.8, withSkills: 35.4, efficiency: "↓ 55.7% turns" },
 ];

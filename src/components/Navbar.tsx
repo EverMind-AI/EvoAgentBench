@@ -10,24 +10,30 @@ export function Navbar() {
           EvoAgentBench
         </Link>
         <nav className="flex items-center gap-5 text-sm">
-          <a
+          <Link
+            href="/leaderboard"
+            className="text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Leaderboard
+          </Link>
+          <Link
             href="/#results"
             className="text-muted-foreground hover:text-foreground transition-colors"
           >
             Results
-          </a>
-          <a
+          </Link>
+          <Link
             href="/#domains"
             className="text-muted-foreground hover:text-foreground transition-colors"
           >
             Domains
-          </a>
-          <a
+          </Link>
+          <Link
             href="/#methods"
             className="text-muted-foreground hover:text-foreground transition-colors"
           >
             Self-Evolution
-          </a>
+          </Link>
 
           <span className="h-4 w-px bg-border" />
 

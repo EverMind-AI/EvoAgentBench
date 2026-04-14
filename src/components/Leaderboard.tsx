@@ -108,12 +108,6 @@ export function Leaderboard({ compact = false }: { compact?: boolean }) {
     // Build display rows
     const overalls = buildOverallRows(data);
 
-    if (domainFilter === "Overall") {
-      // Only show overall rows
-      const all = [...overalls];
-      return all;
-    }
-
     const individual: DisplayRow[] = data.map((d) => ({
       ...d,
       domain: DOMAIN_LABELS[d.domain],
@@ -121,7 +115,7 @@ export function Leaderboard({ compact = false }: { compact?: boolean }) {
       domainTag: d.domain,
     }));
 
-    const all = [...individual];
+    const all = domainFilter === "Overall" ? [...overalls] : [...individual];
 
     if (sortBy === "withSkills") {
       all.sort((a, b) => b.withSkills - a.withSkills);
@@ -137,7 +131,14 @@ export function Leaderboard({ compact = false }: { compact?: boolean }) {
     return all;
   }, [agentFilter, domainFilter, methodFilter, sortBy]);
 
-  const maxScore = Math.max(...filtered.map((d) => d.withSkills), 1);
+  const maxBarValue = Math.max(
+    ...filtered.map((d) => {
+      if (sortBy === "delta") return d.withSkills - d.without;
+      if (sortBy === "without") return d.without;
+      return d.withSkills;
+    }),
+    1
+  );
 
   const bestScore = Math.max(...leaderboardData.map((d) => d.withSkills));
   const avgDelta =
@@ -229,7 +230,7 @@ export function Leaderboard({ compact = false }: { compact?: boolean }) {
         {/* Method filter */}
         <div className="flex items-center gap-2">
           <span className="text-[11px] text-muted-foreground uppercase tracking-widest font-medium">
-            Filter · Self-Evolving
+            Filter · Self-Evolving Methods
           </span>
           <div className="flex gap-1.5 flex-wrap">
             <FilterButton
@@ -287,7 +288,7 @@ export function Leaderboard({ compact = false }: { compact?: boolean }) {
               <TableHead>Agent</TableHead>
               <TableHead>Base Model</TableHead>
               <TableHead>Domain</TableHead>
-              <TableHead>Self-Evolving</TableHead>
+              <TableHead>Self-Evolving Methods</TableHead>
               <TableHead className="text-right">Without</TableHead>
               <TableHead className="text-right font-semibold">
                 With Skills
@@ -300,7 +301,8 @@ export function Leaderboard({ compact = false }: { compact?: boolean }) {
           <TableBody>
             {displayData.map((row, i) => {
               const delta = row.withSkills - row.without;
-              const barWidth = (row.withSkills / maxScore) * 100;
+              const barValue = sortBy === "delta" ? Math.abs(delta) : sortBy === "without" ? row.without : row.withSkills;
+              const barWidth = (barValue / maxBarValue) * 100;
               const deltaColor = delta >= 0 ? "text-emerald-600" : "text-red-500";
               const deltaStr = delta >= 0 ? `+${delta.toFixed(1)}` : delta.toFixed(1);
 
@@ -353,10 +355,10 @@ export function Leaderboard({ compact = false }: { compact?: boolean }) {
                     </span>
                   </TableCell>
                   <TableCell className="text-right text-muted-foreground">
-                    {row.without}%
+                    {row.without.toFixed(1)}%
                   </TableCell>
                   <TableCell className="text-right font-bold text-lg">
-                    {row.withSkills}%
+                    {row.withSkills.toFixed(1)}%
                   </TableCell>
                   <TableCell className={`text-right font-semibold ${deltaColor}`}>
                     {deltaStr}

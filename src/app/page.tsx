@@ -15,7 +15,7 @@ export default function Home() {
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight mb-6">
             EvoAgentBench
           </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-6 leading-relaxed italic">
+          <p className="text-xl md:text-2xl text-muted-foreground mx-auto mb-6 italic whitespace-nowrap">
             A Unified Evaluation Framework for AI Agent Self-Evolution
           </p>
           <p className="text-sm text-muted-foreground max-w-3xl mx-auto mb-10 leading-relaxed">
