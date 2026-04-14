@@ -4,7 +4,7 @@ export type Domain =
   | "BrowseCompPlus"
   | "OmniMath"
   | "SWE-Bench"
-  | "LiveCode"
+  | "LiveCodeBench"
   | "GDPVal";
 
 export type SkillMethod = "EverOS" | "Human Design";
@@ -16,7 +16,7 @@ export interface LeaderboardEntry {
   skillMethod: SkillMethod;
   without: number;
   withSkills: number;
-  efficiency: string;
+  cost: string;
 }
 
 export const AGENTS: Agent[] = ["OpenClaw", "Nanabot"];
@@ -25,7 +25,7 @@ export const DOMAINS: Domain[] = [
   "BrowseCompPlus",
   "OmniMath",
   "SWE-Bench",
-  "LiveCode",
+  "LiveCodeBench",
   "GDPVal",
 ];
 
@@ -45,7 +45,7 @@ export const DOMAIN_LABELS: Record<Domain, string> = {
   BrowseCompPlus: "Information Retrieval",
   OmniMath: "Reasoning & Problem Decomposition",
   "SWE-Bench": "Software Engineering",
-  LiveCode: "Code Implementation",
+  LiveCodeBench: "Code Implementation",
   GDPVal: "Knowledge Work",
 };
 
@@ -53,7 +53,7 @@ export const DOMAIN_TAG_COLORS: Record<Domain, { bg: string; text: string }> = {
   BrowseCompPlus: { bg: "#fde68a", text: "#78350f" },
   OmniMath: { bg: "#dbeafe", text: "#1e40af" },
   "SWE-Bench": { bg: "#fce7f3", text: "#9d174d" },
-  LiveCode: { bg: "#d1fae5", text: "#065f46" },
+  LiveCodeBench: { bg: "#d1fae5", text: "#065f46" },
   GDPVal: { bg: "#ede9fe", text: "#5b21b6" },
 };
 
@@ -111,7 +111,7 @@ export const DOMAIN_INFO: DomainInfo[] = [
     docker: true,
   },
   {
-    id: "LiveCode",
+    id: "LiveCodeBench",
     name: "Code Implementation",
     baseBenchmark: "LiveCodeBench",
     category: "Code Implementation",
@@ -186,21 +186,24 @@ export const ALL_METHODS: AllMethodInfo[] = [
 // Only domains with actual experiment data are included
 
 export const leaderboardData: LeaderboardEntry[] = [
-  // OpenClaw + Qwen3.5-397B
-  { agent: "OpenClaw", model: "Qwen3.5-397B", domain: "BrowseCompPlus", skillMethod: "EverOS", without: 24.6, withSkills: 38.5, efficiency: "↓ 21.9% turns" },
-  { agent: "OpenClaw", model: "Qwen3.5-397B", domain: "OmniMath",       skillMethod: "EverOS", without: 45.0, withSkills: 49.0, efficiency: "↓ 32.1% chars" },
-  { agent: "OpenClaw", model: "Qwen3.5-397B", domain: "SWE-Bench",      skillMethod: "EverOS", without: 26.9, withSkills: 38.5, efficiency: "↓ 11.4% turns" },
-
-  // OpenClaw + Qwen3.5-27B
-  { agent: "OpenClaw", model: "Qwen3.5-27B",  domain: "BrowseCompPlus", skillMethod: "EverOS", without: 30.8, withSkills: 32.3, efficiency: "↑ 4.7% turns" },
-  { agent: "OpenClaw", model: "Qwen3.5-27B",  domain: "OmniMath",       skillMethod: "EverOS", without: 37.0, withSkills: 35.0, efficiency: "↓ 6.2% chars" },
-  { agent: "OpenClaw", model: "Qwen3.5-27B",  domain: "SWE-Bench",      skillMethod: "EverOS", without: 11.5, withSkills: 38.5, efficiency: "↑ 41.2% turns" },
-
-  // OpenClaw + Human Design
-  { agent: "OpenClaw", model: "Qwen3.5-397B", domain: "OmniMath",  skillMethod: "Human Design", without: 45.0, withSkills: 60.0, efficiency: "↑ 2.7% chars" },
-  { agent: "OpenClaw", model: "Qwen3.5-27B",  domain: "OmniMath",  skillMethod: "Human Design", without: 37.0, withSkills: 29.0, efficiency: "↓ 13.0% chars" },
-  { agent: "OpenClaw", model: "Qwen3.5-397B", domain: "SWE-Bench", skillMethod: "Human Design", without: 26.9, withSkills: 61.5, efficiency: "↓ 0.5% turns" },
-  { agent: "OpenClaw", model: "Qwen3.5-27B",  domain: "SWE-Bench", skillMethod: "Human Design", without: 11.5, withSkills: 38.5, efficiency: "↑ 62.5% turns" },
-  { agent: "OpenClaw", model: "Qwen3.5-397B", domain: "BrowseCompPlus", skillMethod: "Human Design", without: 32.3, withSkills: 55.4, efficiency: "↓ 21.8% turns" },
-  { agent: "OpenClaw", model: "Qwen3.5-27B",  domain: "BrowseCompPlus", skillMethod: "Human Design", without: 30.8, withSkills: 35.4, efficiency: "↓ 55.7% turns" },
+  { agent: "OpenClaw", model: "Qwen3.5-397B", domain: "BrowseCompPlus", skillMethod: "EverOS", without: 24.6, withSkills: 38.5, cost: "↓ 21.9% turns" },
+  { agent: "OpenClaw", model: "Qwen3.5-27B", domain: "BrowseCompPlus", skillMethod: "EverOS", without: 30.8, withSkills: 32.3, cost: "↑ 4.7% turns" },
+  { agent: "OpenClaw", model: "Qwen3.5-397B", domain: "BrowseCompPlus", skillMethod: "Human Design", without: 32.3, withSkills: 55.4, cost: "↓ 21.8% turns" },
+  { agent: "OpenClaw", model: "Qwen3.5-27B", domain: "BrowseCompPlus", skillMethod: "Human Design", without: 30.8, withSkills: 35.4, cost: "↓ 55.7% turns" },
+  { agent: "OpenClaw", model: "Qwen3.5-397B", domain: "SWE-Bench", skillMethod: "EverOS", without: 26.9, withSkills: 38.5, cost: "↓ 11.4% turns" },
+  { agent: "OpenClaw", model: "Qwen3.5-27B", domain: "SWE-Bench", skillMethod: "EverOS", without: 11.5, withSkills: 38.5, cost: "↑ 41.2% turns" },
+  { agent: "OpenClaw", model: "Qwen3.5-397B", domain: "SWE-Bench", skillMethod: "Human Design", without: 26.9, withSkills: 61.5, cost: "↓ 0.5% turns" },
+  { agent: "OpenClaw", model: "Qwen3.5-27B", domain: "SWE-Bench", skillMethod: "Human Design", without: 11.5, withSkills: 38.5, cost: "↑ 62.5% turns" },
+  { agent: "OpenClaw", model: "Qwen3.5-397B", domain: "OmniMath", skillMethod: "EverOS", without: 45, withSkills: 49, cost: "↓ 32.1% chars" },
+  { agent: "OpenClaw", model: "Qwen3.5-27B", domain: "OmniMath", skillMethod: "EverOS", without: 37, withSkills: 42, cost: "↓ 6.2% chars" },
+  { agent: "OpenClaw", model: "Qwen3.5-397B", domain: "OmniMath", skillMethod: "Human Design", without: 45, withSkills: 60, cost: "↑ 2.7% chars" },
+  { agent: "OpenClaw", model: "Qwen3.5-27B", domain: "OmniMath", skillMethod: "Human Design", without: 37, withSkills: 29, cost: "↓ 13.0% chars" },
+  { agent: "OpenClaw", model: "Qwen3.5-397B", domain: "GDPVal", skillMethod: "EverOS", without: 50, withSkills: 56.9, cost: "↑ 24.7% turns" },
+  { agent: "OpenClaw", model: "Qwen3.5-27B", domain: "GDPVal", skillMethod: "EverOS", without: 51.7, withSkills: 55.2, cost: "↑ 5.4% turns" },
+  { agent: "OpenClaw", model: "Qwen3.5-397B", domain: "GDPVal", skillMethod: "Human Design", without: 50, withSkills: 72.4, cost: "↑ 91.8% turns" },
+  { agent: "OpenClaw", model: "Qwen3.5-27B", domain: "GDPVal", skillMethod: "Human Design", without: 51.7, withSkills: 65.5, cost: "↑ 43.8% turns" },
+  { agent: "OpenClaw", model: "Qwen3.5-397B", domain: "LiveCodeBench", skillMethod: "EverOS", without: 56.4, withSkills: 56.4, cost: "↓ 3.3% turns" },
+  { agent: "OpenClaw", model: "Qwen3.5-27B", domain: "LiveCodeBench", skillMethod: "EverOS", without: 53.8, withSkills: 51.3, cost: "↓ 4.8% turns" },
+  { agent: "OpenClaw", model: "Qwen3.5-397B", domain: "LiveCodeBench", skillMethod: "Human Design", without: 56.4, withSkills: 64.1, cost: "↓ 6.7% turns" },
+  { agent: "OpenClaw", model: "Qwen3.5-27B", domain: "LiveCodeBench", skillMethod: "Human Design", without: 53.8, withSkills: 64.1, cost: "— 0% turns" },
 ];

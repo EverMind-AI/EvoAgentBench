@@ -35,7 +35,7 @@ interface DisplayRow {
   skillMethod: string;
   without: number;
   withSkills: number;
-  efficiency: string;
+  cost: string;
   isOverall: boolean;
   domainTag?: Domain;
 }
@@ -54,11 +54,11 @@ function buildOverallRows(data: LeaderboardEntry[]): DisplayRow[] {
     const avgWithout = entries.reduce((s, e) => s + e.without, 0) / entries.length;
     const avgWith = entries.reduce((s, e) => s + e.withSkills, 0) / entries.length;
 
-    // Parse efficiency percentages and average them
+    // Parse cost percentages and average them
     let effSum = 0;
     let effCount = 0;
     for (const e of entries) {
-      const match = e.efficiency.match(/([↑↓])\s*([\d.]+)%/);
+      const match = e.cost.match(/([↑↓])\s*([\d.]+)%/);
       if (match) {
         const val = parseFloat(match[2]);
         // ↓ means cost reduced (negative), ↑ means cost increased (positive)
@@ -80,7 +80,7 @@ function buildOverallRows(data: LeaderboardEntry[]): DisplayRow[] {
       skillMethod: entries[0].skillMethod,
       without: Math.round(avgWithout * 10) / 10,
       withSkills: Math.round(avgWith * 10) / 10,
-      efficiency: effStr,
+      cost: effStr,
       isOverall: true,
     });
   }
@@ -133,7 +133,7 @@ export function Leaderboard({ compact = false }: { compact?: boolean }) {
 
   const maxBarValue = Math.max(
     ...filtered.map((d) => {
-      if (sortBy === "delta") return d.withSkills - d.without;
+      if (sortBy === "delta") return Math.abs(d.withSkills - d.without);
       if (sortBy === "without") return d.without;
       return d.withSkills;
     }),
@@ -145,7 +145,7 @@ export function Leaderboard({ compact = false }: { compact?: boolean }) {
     leaderboardData.reduce((s, d) => s + (d.withSkills - d.without), 0) /
     leaderboardData.length;
 
-  const displayData = compact ? filtered.slice(0, 10) : filtered;
+  const displayData = filtered;
 
   return (
     <div>
@@ -294,7 +294,7 @@ export function Leaderboard({ compact = false }: { compact?: boolean }) {
                 With Skills
               </TableHead>
               <TableHead className="text-right">Δ</TableHead>
-              <TableHead className="w-24"></TableHead>
+              <TableHead className="w-32"></TableHead>
               <TableHead className="text-right">Cost</TableHead>
             </TableRow>
           </TableHeader>
@@ -373,11 +373,11 @@ export function Leaderboard({ compact = false }: { compact?: boolean }) {
                     />
                   </TableCell>
                   <TableCell className={`text-right font-semibold text-sm whitespace-nowrap ${
-                    row.efficiency === "—" ? "text-muted-foreground"
-                    : row.efficiency.startsWith("↓") ? "text-emerald-600"
+                    row.cost === "—" ? "text-muted-foreground"
+                    : row.cost.startsWith("↓") ? "text-emerald-600"
                     : "text-red-500"
                   }`}>
-                    {row.efficiency}
+                    {row.cost}
                   </TableCell>
                 </TableRow>
               );
