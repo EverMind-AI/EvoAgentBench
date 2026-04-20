@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 /**
- * Reads leaderboard.csv and updates the leaderboardData array in leaderboard-data.ts.
+ * Reads leaderboard.csv and updates leaderboard-data.ts.
+ * Runs automatically as a prebuild step, so you only need to edit the CSV.
  *
- * Usage: node scripts/csv-to-data.js
+ * Manual run: node scripts/csv-to-data.js
  *
  * To add new results:
  * 1. Edit src/data/leaderboard.csv (add/modify rows)
- * 2. Run: node scripts/csv-to-data.js
- * 3. Commit and push
+ * 2. Commit and push — the build will auto-sync the TS file
  */
 
 const fs = require("fs");
@@ -16,12 +16,9 @@ const path = require("path");
 const csvPath = path.join(__dirname, "../src/data/leaderboard.csv");
 const tsPath = path.join(__dirname, "../src/data/leaderboard-data.ts");
 
-// Read CSV
 const csv = fs.readFileSync(csvPath, "utf-8").trim();
 const lines = csv.split("\n");
-const headers = lines[0].split(",");
 const rows = lines.slice(1).map((line) => {
-  // Handle commas inside cost values like "↓ 21.9% turns"
   const parts = line.split(",");
   return {
     agent: parts[0],
@@ -30,11 +27,10 @@ const rows = lines.slice(1).map((line) => {
     skillMethod: parts[3],
     without: parseFloat(parts[4]),
     withSkills: parseFloat(parts[5]),
-    cost: parts.slice(6).join(","), // in case cost has commas
+    cost: parts.slice(6).join(","),
   };
 });
 
-// Generate TS entries
 const entries = rows
   .map(
     (r) =>
@@ -42,27 +38,44 @@ const entries = rows
   )
   .join("\n");
 
-// Read existing TS file
+const uniqueMethods = [...new Set(rows.map((r) => r.skillMethod))];
+const methodsArrayLiteral = uniqueMethods.map((m) => `"${m}"`).join(", ");
+
 let ts = fs.readFileSync(tsPath, "utf-8");
 
+function replaceBlock(src, startMarker, endMarker, replacement, label) {
+  const startIdx = src.indexOf(startMarker);
+  if (startIdx === -1) {
+    console.error(`Could not find ${label} in leaderboard-data.ts`);
+    process.exit(1);
+  }
+  const endIdx = src.indexOf(endMarker, startIdx);
+  if (endIdx === -1) {
+    console.error(`Could not find closing marker for ${label}`);
+    process.exit(1);
+  }
+  return src.substring(0, startIdx) + replacement + src.substring(endIdx + endMarker.length);
+}
+
 // Replace leaderboardData array
-const startMarker = "export const leaderboardData: LeaderboardEntry[] = [";
-const endMarker = "];";
+ts = replaceBlock(
+  ts,
+  "export const leaderboardData: LeaderboardEntry[] = [",
+  "];",
+  `export const leaderboardData: LeaderboardEntry[] = [\n${entries}\n];`,
+  "leaderboardData"
+);
 
-const startIdx = ts.indexOf(startMarker);
-if (startIdx === -1) {
-  console.error("Could not find leaderboardData array in leaderboard-data.ts");
-  process.exit(1);
-}
-
-const endIdx = ts.indexOf(endMarker, startIdx);
-if (endIdx === -1) {
-  console.error("Could not find closing bracket of leaderboardData array");
-  process.exit(1);
-}
-
-const newArray = `${startMarker}\n${entries}\n${endMarker}`;
-ts = ts.substring(0, startIdx) + newArray + ts.substring(endIdx + endMarker.length);
+// Replace SKILL_METHODS list (derived from unique CSV values)
+ts = replaceBlock(
+  ts,
+  "export const SKILL_METHODS: SkillMethod[] = [",
+  "];",
+  `export const SKILL_METHODS: SkillMethod[] = [${methodsArrayLiteral}];`,
+  "SKILL_METHODS"
+);
 
 fs.writeFileSync(tsPath, ts);
-console.log(`Updated leaderboard-data.ts with ${rows.length} entries from CSV.`);
+console.log(
+  `Synced ${rows.length} entries and ${uniqueMethods.length} skill methods from CSV.`
+);

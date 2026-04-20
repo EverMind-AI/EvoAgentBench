@@ -7,6 +7,9 @@
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
+    "sync-data": "node scripts/csv-to-data.js",
+    "prebuild": "node scripts/csv-to-data.js",
+    "predev": "node scripts/csv-to-data.js",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
