@@ -7,7 +7,7 @@ OpenClaw,Qwen3.5-397B,BrowseCompPlus,ReasoningBank,38.5,29.2,↑ 1.1% turns
 OpenClaw,Qwen3.5-397B,BrowseCompPlus,Human Design,32.3,55.4,↓ 21.8% turns
 OpenClaw,Qwen3.5-27B,BrowseCompPlus,Human Design,30.8,35.4,↑ 14.2% turns
 OpenClaw,Qwen3.5-397B,BrowseCompPlus,EvoSkill,38.5,43.1,↓ 19.6% turns
-OpenClaw,Qwen3.5-27B,BrowseCompPlus,EvoSkill,7.7,0,— no valid skill extracted
+OpenClaw,Qwen3.5-27B,BrowseCompPlus,EvoSkill,7.7,7.7,— 0% turns
 OpenClaw,Qwen3.5-397B,SWE-Bench,EverOS,34.6,42.3,↓ 11.4% turns
 OpenClaw,Qwen3.5-27B,SWE-Bench,EverOS,23.1,30.8,↑ 17.1% turns
 OpenClaw,Qwen3.5-397B,SWE-Bench,Memento,34.6,42.3,↓ 5.3% turns
