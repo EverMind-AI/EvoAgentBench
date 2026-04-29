@@ -16,7 +16,7 @@ const path = require("path");
 const csvPath = path.join(__dirname, "../src/data/leaderboard.csv");
 const tsPath = path.join(__dirname, "../src/data/leaderboard-data.ts");
 
-const csv = fs.readFileSync(csvPath, "utf-8").trim();
+const csv = fs.readFileSync(csvPath, "utf-8").replace(/\r/g, "").trim();
 const lines = csv.split("\n");
 const rows = lines.slice(1).map((line) => {
   const parts = line.split(",");

@@ -66,7 +66,7 @@ export default function Home() {
             <div className="text-2xl mb-3">🤖</div>
             <h3 className="font-semibold text-foreground mb-2">Multi-Agent Support</h3>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Plug in any CLI-based agent — Nanabot, OpenClaw, or your own.
+              Plug in any CLI-based agent — Nanobot, OpenClaw, or your own.
               Each task runs in isolated config with independent workspace,
               supporting concurrent execution and automatic retry.
             </p>
