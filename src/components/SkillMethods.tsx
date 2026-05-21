@@ -6,6 +6,7 @@ const APPROACH_COLORS: Record<string, { bg: string; text: string }> = {
   "Retrieval-based (CBR)": { bg: "#fce7f3", text: "#9d174d" },
   "Continuous accumulation": { bg: "#fef3c7", text: "#92400e" },
   "Memory + reasoning": { bg: "#fef9c3", text: "#713f12" },
+  "Prompt evolution": { bg: "#ede9fe", text: "#5b21b6" },
   "Expert-crafted": { bg: "#e0f2fe", text: "#0369a1" },
 };
 
@@ -14,7 +15,7 @@ export function SkillMethods() {
     <section id="methods" className="py-16 md:py-24 px-6 bg-secondary">
       <div className="max-w-6xl mx-auto">
         <p className="font-mono text-sm text-muted-foreground mb-2 tracking-wider">
-          04 — SELF-EVOLUTION
+          05 — SELF-EVOLUTION
         </p>
         <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
           Skill Extraction Methods
@@ -22,8 +23,8 @@ export function SkillMethods() {
         <p className="text-muted-foreground mb-10 max-w-2xl">
           EvoAgentBench provides a standardized protocol for evaluating agent
           self-evolution methods — techniques that let agents learn from past
-          experience and improve future performance. 5 methods are currently
-          integrated.
+          experience and improve future performance. {ALL_METHODS.length}{" "}
+          methods are currently integrated.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

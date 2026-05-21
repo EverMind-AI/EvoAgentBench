@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { Leaderboard } from "@/components/Leaderboard";
+import { DomainDivergingBars } from "@/components/DomainDivergingBars";
 import { BenchmarkDomains } from "@/components/BenchmarkDomains";
 import { SkillMethods } from "@/components/SkillMethods";
+import { ResearchNarrative } from "@/components/ResearchNarrative";
 
 export default function Home() {
   return (
@@ -30,7 +31,7 @@ export default function Home() {
           <div className="flex items-center justify-center gap-3 flex-wrap">
             <Link
               href="/leaderboard"
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-foreground text-background text-sm font-medium hover:opacity-90 transition-opacity"
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-border bg-background text-sm font-medium hover:bg-secondary transition-colors"
             >
               Full Leaderboard
             </Link>
@@ -83,27 +84,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Results */}
-      <section id="results" className="mx-auto max-w-6xl px-6 py-16">
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <p className="font-mono text-sm text-muted-foreground mb-2 tracking-wider">
-              02 — RESULTS
-            </p>
-            <h2 className="text-2xl font-bold">Agent Performance</h2>
-            <p className="text-sm text-muted-foreground mt-1">
-              Partial results shown below. More agents, domains, and methods coming soon.
-            </p>
-          </div>
-          <Link
-            href="/leaderboard"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
-            View all &rarr;
-          </Link>
-        </div>
-        <Leaderboard compact />
-      </section>
+      {/* Results — per-configuration diverging bars with filters */}
+      <DomainDivergingBars />
+
+      {/* Research narrative — why self-evolution, lessons, what the bench does */}
+      <ResearchNarrative />
 
       {/* Benchmark Domains */}
       <BenchmarkDomains />

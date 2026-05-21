@@ -177,13 +177,14 @@ export const ALL_METHODS: AllMethodInfo[] = [
     github: "https://github.com/EverMind-AI/EverOS",
     status: "available",
   },
-  {
-    name: "EvoSkill",
-    description: "An agent-agnostic toolkit for automatically creating and improving AI skills. Runs an evolution loop where an Executor collects failures and a Proposer analyzes patterns to synthesize reusable skills.",
-    approach: "Evolutionary optimization",
-    github: "https://github.com/sentient-agi/EvoSkill",
-    status: "available",
-  },
+  // Temporarily hidden — may be re-enabled later.
+  // {
+  //   name: "EvoSkill",
+  //   description: "An agent-agnostic toolkit for automatically creating and improving AI skills. Runs an evolution loop where an Executor collects failures and a Proposer analyzes patterns to synthesize reusable skills.",
+  //   approach: "Evolutionary optimization",
+  //   github: "https://github.com/sentient-agi/EvoSkill",
+  //   status: "available",
+  // },
   {
     name: "Memento",
     description: "A memory-based continual-learning framework using Case-Based Reasoning. Logs successful and failed trajectories into a Case Bank, retrieves by Q-value with SimCSE embeddings to steer planning.",
@@ -191,18 +192,26 @@ export const ALL_METHODS: AllMethodInfo[] = [
     github: "https://github.com/Agent-on-the-Fly/Memento",
     status: "available",
   },
-  {
-    name: "OpenSpace",
-    description: "A self-evolving engine where every task makes every agent smarter. Skills automatically select, apply, monitor, analyze, and evolve themselves via three evolution modes (FIX, DERIVED, CAPTURED).",
-    approach: "Continuous accumulation",
-    github: "https://github.com/HKUDS/OpenSpace",
-    status: "available",
-  },
+  // Temporarily hidden — may be re-enabled later.
+  // {
+  //   name: "OpenSpace",
+  //   description: "A self-evolving engine where every task makes every agent smarter. Skills automatically select, apply, monitor, analyze, and evolve themselves via three evolution modes (FIX, DERIVED, CAPTURED).",
+  //   approach: "Continuous accumulation",
+  //   github: "https://github.com/HKUDS/OpenSpace",
+  //   status: "available",
+  // },
   {
     name: "ReasoningBank",
     description: "A memory mechanism that learns from both successful and failed trajectories, storing reasoning as memory content. Introduces memory-aware test-time scaling — experience-driven memory as an additional scaling dimension for agent systems.",
     approach: "Memory + reasoning",
     github: "https://github.com/google-research/reasoning-bank",
+    status: "available",
+  },
+  {
+    name: "GEPA",
+    description: "Reflective prompt evolution — evolves a single domain-level prompt by iteratively proposing variants from LLM reflection over failed cases and selecting via a Pareto frontier on the training set. No runtime memory or retrieval required.",
+    approach: "Prompt evolution",
+    github: "https://github.com/gepa-ai/gepa",
     status: "available",
   },
 ];

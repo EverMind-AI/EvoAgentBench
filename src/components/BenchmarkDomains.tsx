@@ -13,7 +13,7 @@ export function BenchmarkDomains() {
     <section id="domains" className="py-16 md:py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <p className="font-mono text-sm text-muted-foreground mb-2 tracking-wider">
-          03 — DOMAINS
+          04 — DOMAINS
         </p>
         <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
           Evaluation Domains
