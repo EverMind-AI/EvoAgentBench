@@ -1,0 +1,31 @@
+# GDPVal domain config
+#
+# System dependencies for evaluation (PDF/PPTX deliverables):
+#   apt install poppler-utils    # required by pdf2image for PDF → image conversion
+#   apt install libreoffice      # required for PPTX → PDF conversion (optional)
+
+# Agent task workspace — where the agent writes deliverables.
+workspace_root: ../../../workspaces/knowledge_work
+
+# HuggingFace dataset (loaded via datasets library, cached locally)
+hf_dataset_owner: openai
+hf_dataset_name: gdpval
+
+# Directory containing downloaded reference files (organized by task_id)
+# Files are auto-downloaded from HuggingFace on first run if not present.
+split_file: ../../../data/splits/knowledge_work.json
+reference_dir: ../../../data/gdpval/Knowledge Work/reference_files
+
+# ClawWork meta-prompts (per-occupation evaluation rubrics)
+meta_prompts_dir: ../../../data/gdpval/Knowledge Work/meta_prompts
+
+# Agent timeout in seconds
+agent_timeout: 3600
+
+# LLM evaluator settings (ClawWork-compatible). OpenRouter is the default;
+# EVALUATION_API_BASE, EVALUATION_API_KEY, and EVALUATION_MODEL can override it
+# with any OpenAI-compatible chat-completions endpoint.
+eval_api_base: https://openrouter.ai/api/v1
+eval_model_owner: openai
+eval_model_name: gpt-4o
+pass_threshold: 0.6

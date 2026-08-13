@@ -1,0 +1,21 @@
+# OpenClaw + Qwen3.5-397B-A17B-GPTQ-Int4 through an OpenAI-compatible vLLM endpoint.
+# Copy this file to openclaw.yaml before selecting openclaw in config.yaml.
+
+name: openclaw
+command: openclaw
+timeout_seconds: 1800
+
+model: vllm/Qwen3.5-397B-A17B-GPTQ-Int4
+providers:
+  vllm:
+    baseUrl: ${VLLM_API_BASE}
+    apiKey: ${VLLM_API_KEY}
+    api: openai-completions
+    models:
+      - id: Qwen3.5-397B-A17B-GPTQ-Int4
+        name: Qwen3.5-397B-A17B-GPTQ-Int4
+        reasoning: true
+        contextWindow: 128000
+        maxTokens: 20000
+        compat:
+          thinkingFormat: qwen

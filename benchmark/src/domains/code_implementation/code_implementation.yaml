@@ -1,0 +1,20 @@
+# LiveCodeBench domain config
+
+# LiveCodeBench source path (used to import its evaluation modules)
+# git clone https://github.com/LiveCodeBench/LiveCodeBench.git
+lcb_repo: ../../../LiveCodeBench
+
+# Dataset release
+release_version: release_v6
+
+# Local cache; downloaded from Hugging Face on first use
+cache_dir: ../../../data/livecode
+
+# Paper train/test split (flat and cluster formats are both supported)
+split_file: ../../../data/splits/code_implementation.json
+
+# Agent timeout in seconds
+agent_timeout: 1800
+
+# Test timeout in seconds per case
+test_timeout: 6

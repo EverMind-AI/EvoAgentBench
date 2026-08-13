@@ -5,6 +5,21 @@ Leaderboard and project website for **EvoAgentBench** — a benchmark for evalua
 - **Live site**: https://evermind-ai.github.io/EvoAgentBench/
 - **Paper**: [EvoAgentBench: Benchmarking Agent Self-Evolution via Ability Transfer](https://arxiv.org/abs/2607.05202)
 - **Dataset**: [EverMind-AI/EvoAgentBench](https://huggingface.co/datasets/EverMind-AI/EvoAgentBench) on Hugging Face
+- **Benchmark code**: [`benchmark/`](benchmark/README.md)
+
+## Benchmark Code
+
+The public benchmark implementation lives in [`benchmark/`](benchmark/README.md).
+After cloning this repository, enter that directory before following its setup
+instructions:
+
+```bash
+git clone https://github.com/EverMind-AI/EvoAgentBench.git
+cd EvoAgentBench/benchmark
+```
+
+The website and benchmark are versioned together but remain separate projects:
+the website root uses the MIT License, while `benchmark/` uses Apache License 2.0.
 
 ## Features
 
@@ -60,6 +75,7 @@ src/
     └── leaderboard-data.ts      # Domain info, method info, generated results
 scripts/
 └── csv-to-data.js               # Syncs leaderboard.csv into leaderboard-data.ts
+benchmark/                       # Public benchmark runner, adapters, and docs
 ```
 
 ## Deployment
@@ -87,4 +103,6 @@ Import the GitHub repository. No extra configuration needed.
 
 ## License
 
-MIT
+The website is released under the MIT License. The implementation under
+[`benchmark/`](benchmark/) is released under the
+[Apache License 2.0](benchmark/LICENSE).

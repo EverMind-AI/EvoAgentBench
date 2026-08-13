@@ -1,0 +1,54 @@
+# python
+__pycache__/
+*.pyc
+.venv/
+.everos-venv/
+.everos-data/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# editors & OS metadata
+.DS_Store
+.idea/
+.vscode/
+
+# secrets & local config (never commit)
+.env
+.env.*
+!.env.example
+api_keys.json
+config.yaml
+src/agents/nanobot/nanobot.yaml
+src/agents/openclaw/openclaw.yaml
+
+# run outputs
+jobs/
+job*/
+workspaces/
+*.log
+nohup.out
+_logs
+logs/
+
+# data: only splits + README are tracked
+data/*
+!data/README.md
+!data/splits/
+
+# vendored external clone (re-clone or cp; see README)
+LiveCodeBench/
+third_party/
+
+# EverOS runtime products
+src/skill_evolution/evermemos/config.yaml
+src/skill_evolution/evermemos/skills/
+src/skill_evolution/evermemos/skills_*
+
+.claude/

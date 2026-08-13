@@ -1,0 +1,10 @@
+-r requirements-core.txt
+
+# LiveCodeBench dataset loading and the imported official test runner.
+datasets==2.21.0
+huggingface-hub==0.33.4
+numpy==2.2.6
+pandas==2.2.3
+tqdm==4.67.1
+
+# Install the LiveCodeBench source separately with --no-deps; see the domain guide.

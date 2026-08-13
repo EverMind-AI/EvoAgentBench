@@ -1,0 +1,46 @@
+# EvoAgentBench configuration
+# Copy to config.yaml and edit for your environment
+#
+# Setup:
+#   1. cp config.yaml.example config.yaml
+#   2. cp .env.example .env && edit .env (fill in API keys)
+#   3. Copy one agent *.yaml.example to its corresponding *.yaml and edit it
+#   4. Select one of the four domains below
+#
+# Relative paths in this file are resolved from this file's directory.
+
+# ── Agent configs ────────────────────────────────────────────────
+# Map of agent name -> yaml config path.
+# Copy the .yaml.example to .yaml and edit for your environment.
+agent_configs:
+  nanobot: ./src/agents/nanobot/nanobot.yaml
+  openclaw: ./src/agents/openclaw/openclaw.yaml
+
+# Active agent (must be a key in agent_configs above)
+agent: nanobot
+
+# ── Benchmark ─────────────────────────────────────────────────────
+# REQUIRED: select exactly one paper domain and its matching config:
+#   information_retrieval -> ./src/domains/information_retrieval/information_retrieval.yaml
+#   code_implementation   -> ./src/domains/code_implementation/code_implementation.yaml
+#   software_engineering  -> ./src/domains/software_engineering/software_engineering.yaml
+#   knowledge_work        -> ./src/domains/knowledge_work/knowledge_work.yaml
+# Each domain config contains:
+#   - data paths (dataset_file, split_file, index_path)
+#   - judge LLM config (information_retrieval: judge.model, judge.api_base, judge.api_key)
+#   - agent_timeout, MCP server settings
+domain:
+  name: information_retrieval
+  config: ./src/domains/information_retrieval/information_retrieval.yaml
+
+# ── Output ────────────────────────────────────────────────────────
+job_dir: ./jobs
+
+# ── Run settings ──────────────────────────────────────────────────
+trials: 1                            # pass@k: run each task N times
+parallel: 1                          # max concurrent tasks
+max_retries: 2                       # retry on failure
+
+# Docker settings (optional, for Software Engineering)
+# docker: docker
+# docker_sock: /var/run/docker.sock

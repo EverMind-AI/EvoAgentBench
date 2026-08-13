@@ -1,0 +1,10 @@
+# Optional defaults shared by extract_skills.py and eval_with_skills.py.
+# Copy to config.yaml; the local file is ignored by Git.
+api_url: http://127.0.0.1:8000
+app_id: evoagentbench
+# project_id defaults to the selected EvoAgentBench domain when omitted.
+skills_dir: src/skill_evolution/evermemos/skills
+split_extract: train
+split_eval: test
+poll_interval: 60
+max_wait: 3600

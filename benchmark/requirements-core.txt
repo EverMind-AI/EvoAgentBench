@@ -1,0 +1,3 @@
+# Shared runner, configuration, and EverOS HTTP client (Python 3.12).
+httpx==0.28.1
+PyYAML==6.0.3

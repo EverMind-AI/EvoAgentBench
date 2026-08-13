@@ -1,0 +1,15 @@
+# Nanobot + Qwen3.5-397B-A17B-GPTQ-Int4 through an OpenAI-compatible vLLM endpoint.
+# Copy this file to nanobot.yaml before selecting nanobot in config.yaml.
+
+name: nanobot
+command: nanobot
+
+model: Qwen3.5-397B-A17B-GPTQ-Int4
+provider: vllm
+maxTokens: 128000
+max_tool_iterations: 200
+providers:
+  vllm:
+    apiKey: ${VLLM_API_KEY}
+    apiBase: ${VLLM_API_BASE}
+    timeout: 1800

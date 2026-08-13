@@ -1,0 +1,3 @@
+# Backward-compatible default: install only the framework core.
+# Install one requirements-<domain>.txt file before running that domain.
+-r requirements-core.txt

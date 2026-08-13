@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "paper": "https://arxiv.org/abs/2607.05202",
+  "source_repository": "https://huggingface.co/datasets/EverMind-AI/EvoAgentBench",
+  "source_revision": "3ac46d860f2f89ff4000f03c9936b618d10570ad",
+  "totals": {
+    "train": 528,
+    "test": 267
+  },
+  "splits": {
+    "web_research": {
+      "source_benchmark": "BrowseComp-Plus",
+      "file": "information_retrieval.json",
+      "train": 154,
+      "test": 65,
+      "sha256": "71e9d2d5bb3ae5d8c49823698e5c32cca60dade4a88e7f8fcf80d8198dd9c794"
+    },
+    "algorithmic_reasoning": {
+      "source_benchmark": "LiveCodeBench",
+      "file": "code_implementation.json",
+      "train": 182,
+      "test": 86,
+      "sha256": "695d131c1f32f9595282da3cf07800f40827b1e7fc130d8e9c91f9d85081c607"
+    },
+    "software_engineering": {
+      "source_benchmark": "SWE-Bench Verified",
+      "file": "software_engineering.json",
+      "train": 87,
+      "test": 56,
+      "sha256": "bccfcf7941e174b2415fda6926f5cf50caf53b8b743d06c011db9dc12ad8814f"
+    },
+    "knowledge_work": {
+      "source_benchmark": "GDPVal",
+      "file": "knowledge_work.json",
+      "train": 105,
+      "test": 60,
+      "sha256": "343e6c5ad12baf102e30e44fa2e1a2e58ac6a93533023d8bf4f7bc7aebe8524a"
+    }
+  }
+}

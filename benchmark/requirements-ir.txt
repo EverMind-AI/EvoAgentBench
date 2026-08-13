@@ -1,0 +1,21 @@
+-r requirements-core.txt
+
+# BrowseComp-Plus data, MCP search server, dense/BM25 retrieval, and judge.
+accelerate==1.9.0
+datasets==2.21.0
+faiss-cpu==1.11.0.post1
+fastmcp==3.0.0
+huggingface-hub==0.33.4
+numpy==2.2.6
+openai==1.97.1
+pandas==2.2.3
+peft==0.16.0
+Pillow==11.3.0
+pyserini==1.2.0
+python-dotenv==1.1.1
+torch==2.7.1
+tqdm==4.67.1
+transformers==4.53.2
+
+# Pinned because the FAISS adapter imports Tevatron internal modules.
+tevatron @ git+https://github.com/texttron/tevatron.git@dd063104c81a76d6a77c845f667b46b9e5abd625

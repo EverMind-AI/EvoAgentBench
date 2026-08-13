@@ -1,0 +1,8 @@
+-r requirements-core.txt
+
+# SWE-Bench Verified data and Docker harness.
+datasets==2.21.0
+docker==7.1.0
+huggingface-hub==0.33.4
+pandas==2.2.3
+swebench==3.0.0
