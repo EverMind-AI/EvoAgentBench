@@ -1,81 +1,97 @@
-agent,model,domain,skillMethod,without,withSkills,cost
-OpenClaw,Qwen3.5-27B,BrowseCompPlus,EverOS,10.8,15.4,↑ 76.5% turns
-OpenClaw,Qwen3.5-27B,BrowseCompPlus,Memento,10.8,16.9,↓ 19.2% turns
-OpenClaw,Qwen3.5-27B,BrowseCompPlus,ReasoningBank,10.8,12.3,↑ 17.8% turns
-OpenClaw,Qwen3.5-27B,BrowseCompPlus,GEPA,10.8,24.6,↓ 0.6% turns
-OpenClaw,Qwen3.5-27B,GDPVal,EverOS,37.3,50.0,↑ 5.5% turns
-OpenClaw,Qwen3.5-27B,GDPVal,Memento,37.3,35.3,↑ 100.0% turns
-OpenClaw,Qwen3.5-27B,GDPVal,ReasoningBank,37.3,34.5,↑ 29.1% turns
-OpenClaw,Qwen3.5-27B,GDPVal,GEPA,37.3,41.2,↑ 41.9% turns
-OpenClaw,Qwen3.5-27B,OmniMath,EverOS,44.0,39.0,↓ 31.8% chars
-OpenClaw,Qwen3.5-27B,OmniMath,Memento,44.0,32.0,↑ 21.1% chars
-OpenClaw,Qwen3.5-27B,OmniMath,ReasoningBank,44.0,21.0,↓ 28.7% chars
-OpenClaw,Qwen3.5-27B,OmniMath,GEPA,44.0,32.0,↓ 37.9% chars
-OpenClaw,Qwen3.5-27B,LiveCodeBench,EverOS,46.2,43.6,↑ 32.7% turns
-OpenClaw,Qwen3.5-27B,LiveCodeBench,Memento,46.2,33.3,↓ 6.1% turns
-OpenClaw,Qwen3.5-27B,LiveCodeBench,ReasoningBank,46.2,28.2,↓ 8.2% turns
-OpenClaw,Qwen3.5-27B,LiveCodeBench,GEPA,46.2,51.3,↑ 20.4% turns
-OpenClaw,Qwen3.5-27B,SWE-Bench,EverOS,38.5,46.2,↑ 0.5% turns
-OpenClaw,Qwen3.5-27B,SWE-Bench,Memento,38.5,30.8,↓ 41.7% turns
-OpenClaw,Qwen3.5-27B,SWE-Bench,ReasoningBank,38.5,50.0,↑ 5.1% turns
-OpenClaw,Qwen3.5-27B,SWE-Bench,GEPA,38.5,15.4,↓ 39.9% turns
-OpenClaw,Qwen3.5-397B,BrowseCompPlus,EverOS,30.8,50.8,↓ 1.5% turns
-OpenClaw,Qwen3.5-397B,BrowseCompPlus,Memento,30.8,29.2,↓ 8.6% turns
-OpenClaw,Qwen3.5-397B,BrowseCompPlus,ReasoningBank,30.8,41.5,↓ 10.3% turns
-OpenClaw,Qwen3.5-397B,BrowseCompPlus,GEPA,30.8,26.2,↑ 14.1% turns
-OpenClaw,Qwen3.5-397B,GDPVal,EverOS,45.1,53.4,↑ 4.4% turns
-OpenClaw,Qwen3.5-397B,GDPVal,Memento,45.1,43.1,↓ 8.1% turns
-OpenClaw,Qwen3.5-397B,GDPVal,ReasoningBank,45.1,43.1,↓ 5.9% turns
-OpenClaw,Qwen3.5-397B,GDPVal,GEPA,45.1,49.0,↑ 5.9% turns
-OpenClaw,Qwen3.5-397B,OmniMath,EverOS,48.0,50.0,↓ 18.0% chars
-OpenClaw,Qwen3.5-397B,OmniMath,Memento,48.0,38.0,↑ 68.5% chars
-OpenClaw,Qwen3.5-397B,OmniMath,ReasoningBank,48.0,43.0,↓ 13.8% chars
-OpenClaw,Qwen3.5-397B,OmniMath,GEPA,48.0,42.0,↓ 18.3% chars
-OpenClaw,Qwen3.5-397B,LiveCodeBench,EverOS,46.2,38.5,↑ 42.0% turns
-OpenClaw,Qwen3.5-397B,LiveCodeBench,Memento,46.2,51.3,↑ 8.0% turns
-OpenClaw,Qwen3.5-397B,LiveCodeBench,ReasoningBank,46.2,38.5,↑ 2.0% turns
-OpenClaw,Qwen3.5-397B,LiveCodeBench,GEPA,46.2,64.1,↑ 90.0% turns
-OpenClaw,Qwen3.5-397B,SWE-Bench,EverOS,25.0,46.2,↑ 32.0% turns
-OpenClaw,Qwen3.5-397B,SWE-Bench,Memento,25.0,42.3,↑ 28.9% turns
-OpenClaw,Qwen3.5-397B,SWE-Bench,ReasoningBank,25.0,65.4,↑ 89.0% turns
-OpenClaw,Qwen3.5-397B,SWE-Bench,GEPA,25.0,50.0,↑ 59.8% turns
-Nanobot,Qwen3.5-27B,BrowseCompPlus,EverOS,6.2,13.8,↓ 34.2% turns
-Nanobot,Qwen3.5-27B,BrowseCompPlus,Memento,6.2,3.1,↑ 18.9% turns
-Nanobot,Qwen3.5-27B,BrowseCompPlus,ReasoningBank,6.2,9.2,↑ 40.6% turns
-Nanobot,Qwen3.5-27B,BrowseCompPlus,GEPA,6.2,4.6,↓ 47.4% turns
-Nanobot,Qwen3.5-27B,GDPVal,EverOS,43.1,60.3,↑ 10.9% turns
-Nanobot,Qwen3.5-27B,GDPVal,Memento,43.1,39.2,↑ 66.5% turns
-Nanobot,Qwen3.5-27B,GDPVal,ReasoningBank,43.1,43.1,↑ 64.4% turns
-Nanobot,Qwen3.5-27B,GDPVal,GEPA,43.1,35.3,↑ 72.3% turns
-Nanobot,Qwen3.5-27B,OmniMath,EverOS,47.0,43.0,↑ 2.8% chars
-Nanobot,Qwen3.5-27B,OmniMath,Memento,47.0,42.0,↑ 1843.1% chars
-Nanobot,Qwen3.5-27B,OmniMath,ReasoningBank,47.0,42.0,↑ 42.4% chars
-Nanobot,Qwen3.5-27B,OmniMath,GEPA,47.0,44.0,↓ 0.2% chars
-Nanobot,Qwen3.5-27B,LiveCodeBench,EverOS,25.6,17.9,↑ 131.8% turns
-Nanobot,Qwen3.5-27B,LiveCodeBench,Memento,25.6,30.8,↑ 27.3% turns
-Nanobot,Qwen3.5-27B,LiveCodeBench,ReasoningBank,25.6,35.9,↑ 95.5% turns
-Nanobot,Qwen3.5-27B,LiveCodeBench,GEPA,25.6,35.9,↑ 68.2% turns
-Nanobot,Qwen3.5-27B,SWE-Bench,EverOS,38.5,57.7,↓ 4.2% turns
-Nanobot,Qwen3.5-27B,SWE-Bench,Memento,38.5,50.0,↑ 24.9% turns
-Nanobot,Qwen3.5-27B,SWE-Bench,ReasoningBank,38.5,38.5,↓ 6.5% turns
-Nanobot,Qwen3.5-27B,SWE-Bench,GEPA,38.5,50.0,↑ 29.2% turns
-Nanobot,Qwen3.5-397B,BrowseCompPlus,EverOS,10.8,20.0,↓ 44.0% turns
-Nanobot,Qwen3.5-397B,BrowseCompPlus,Memento,10.8,26.2,↓ 33.6% turns
-Nanobot,Qwen3.5-397B,BrowseCompPlus,ReasoningBank,10.8,13.8,↓ 3.6% turns
-Nanobot,Qwen3.5-397B,BrowseCompPlus,GEPA,10.8,12.3,↓ 47.6% turns
-Nanobot,Qwen3.5-397B,GDPVal,EverOS,54.9,63.8,↑ 1.2% turns
-Nanobot,Qwen3.5-397B,GDPVal,Memento,54.9,62.7,↑ 14.5% turns
-Nanobot,Qwen3.5-397B,GDPVal,ReasoningBank,54.9,65.5,↑ 17.6% turns
-Nanobot,Qwen3.5-397B,GDPVal,GEPA,54.9,60.8,↑ 39.6% turns
-Nanobot,Qwen3.5-397B,OmniMath,EverOS,53.0,51.0,↓ 2.8% chars
-Nanobot,Qwen3.5-397B,OmniMath,Memento,53.0,55.0,↑ 1484.9% chars
-Nanobot,Qwen3.5-397B,OmniMath,ReasoningBank,53.0,49.0,↑ 30.0% chars
-Nanobot,Qwen3.5-397B,OmniMath,GEPA,53.0,55.0,↑ 1.9% chars
-Nanobot,Qwen3.5-397B,LiveCodeBench,EverOS,51.3,35.9,↑ 17.4% turns
-Nanobot,Qwen3.5-397B,LiveCodeBench,Memento,51.3,43.6,↓ 17.4% turns
-Nanobot,Qwen3.5-397B,LiveCodeBench,ReasoningBank,51.3,51.3,↑ 4.3% turns
-Nanobot,Qwen3.5-397B,LiveCodeBench,GEPA,51.3,61.5,↑ 65.2% turns
-Nanobot,Qwen3.5-397B,SWE-Bench,EverOS,46.2,42.3,↓ 15.9% turns
-Nanobot,Qwen3.5-397B,SWE-Bench,Memento,46.2,50.0,↑ 16.2% turns
-Nanobot,Qwen3.5-397B,SWE-Bench,ReasoningBank,46.2,57.7,↑ 12.0% turns
-Nanobot,Qwen3.5-397B,SWE-Bench,GEPA,46.2,42.3,↑ 8.3% turns
+agent,model,domain,skillMethod,vanilla,methodScore
+OpenClaw,Qwen3.5-27B,BrowseCompPlus,Memento,10.8,11.3
+OpenClaw,Qwen3.5-27B,BrowseCompPlus,ReasoningBank,10.8,12.8
+OpenClaw,Qwen3.5-27B,BrowseCompPlus,GEPA,10.8,14.9
+OpenClaw,Qwen3.5-27B,BrowseCompPlus,Anchor Skill†,10.8,14.9
+OpenClaw,Qwen3.5-27B,LiveCodeBench,Memento,51.9,53.9
+OpenClaw,Qwen3.5-27B,LiveCodeBench,ReasoningBank,51.9,57.4
+OpenClaw,Qwen3.5-27B,LiveCodeBench,GEPA,51.9,53.9
+OpenClaw,Qwen3.5-27B,LiveCodeBench,Anchor Skill†,51.9,60.5
+OpenClaw,Qwen3.5-27B,SWE-Bench,Memento,42.3,45.2
+OpenClaw,Qwen3.5-27B,SWE-Bench,ReasoningBank,42.3,36.9
+OpenClaw,Qwen3.5-27B,SWE-Bench,GEPA,42.3,41.7
+OpenClaw,Qwen3.5-27B,SWE-Bench,Anchor Skill†,42.3,52.4
+OpenClaw,Qwen3.5-27B,GDPVal,Memento,43.6,44.3
+OpenClaw,Qwen3.5-27B,GDPVal,ReasoningBank,43.6,48.2
+OpenClaw,Qwen3.5-27B,GDPVal,GEPA,43.6,31.3
+OpenClaw,Qwen3.5-27B,GDPVal,Anchor Skill†,43.6,48.6
+Nanobot,Qwen3.5-27B,BrowseCompPlus,Memento,8.7,12.3
+Nanobot,Qwen3.5-27B,BrowseCompPlus,ReasoningBank,8.7,9.2
+Nanobot,Qwen3.5-27B,BrowseCompPlus,GEPA,8.7,11.8
+Nanobot,Qwen3.5-27B,BrowseCompPlus,Anchor Skill†,8.7,13.3
+Nanobot,Qwen3.5-27B,LiveCodeBench,Memento,52.7,57.0
+Nanobot,Qwen3.5-27B,LiveCodeBench,ReasoningBank,52.7,62.4
+Nanobot,Qwen3.5-27B,LiveCodeBench,GEPA,52.7,60.5
+Nanobot,Qwen3.5-27B,LiveCodeBench,Anchor Skill†,52.7,63.2
+Nanobot,Qwen3.5-27B,SWE-Bench,Memento,45.8,9.5
+Nanobot,Qwen3.5-27B,SWE-Bench,ReasoningBank,45.8,53.0
+Nanobot,Qwen3.5-27B,SWE-Bench,GEPA,45.8,48.8
+Nanobot,Qwen3.5-27B,SWE-Bench,Anchor Skill†,45.8,49.4
+Nanobot,Qwen3.5-27B,GDPVal,Memento,43.9,47.6
+Nanobot,Qwen3.5-27B,GDPVal,ReasoningBank,43.9,49.2
+Nanobot,Qwen3.5-27B,GDPVal,GEPA,43.9,46.6
+Nanobot,Qwen3.5-27B,GDPVal,Anchor Skill†,43.9,57.7
+OpenClaw,Qwen3.5-397B,BrowseCompPlus,Memento,31.8,33.8
+OpenClaw,Qwen3.5-397B,BrowseCompPlus,ReasoningBank,31.8,39.0
+OpenClaw,Qwen3.5-397B,BrowseCompPlus,GEPA,31.8,32.3
+OpenClaw,Qwen3.5-397B,BrowseCompPlus,Anchor Skill†,31.8,45.3
+OpenClaw,Qwen3.5-397B,LiveCodeBench,Memento,52.7,60.9
+OpenClaw,Qwen3.5-397B,LiveCodeBench,ReasoningBank,52.7,59.3
+OpenClaw,Qwen3.5-397B,LiveCodeBench,GEPA,52.7,61.6
+OpenClaw,Qwen3.5-397B,LiveCodeBench,Anchor Skill†,52.7,64.0
+OpenClaw,Qwen3.5-397B,SWE-Bench,Memento,66.7,63.7
+OpenClaw,Qwen3.5-397B,SWE-Bench,ReasoningBank,66.7,61.3
+OpenClaw,Qwen3.5-397B,SWE-Bench,GEPA,66.7,67.9
+OpenClaw,Qwen3.5-397B,SWE-Bench,Anchor Skill†,66.7,76.8
+OpenClaw,Qwen3.5-397B,GDPVal,Memento,55.8,50.0
+OpenClaw,Qwen3.5-397B,GDPVal,ReasoningBank,55.8,57.3
+OpenClaw,Qwen3.5-397B,GDPVal,GEPA,55.8,56.5
+OpenClaw,Qwen3.5-397B,GDPVal,Anchor Skill†,55.8,59.6
+Nanobot,Qwen3.5-397B,BrowseCompPlus,Memento,12.8,16.9
+Nanobot,Qwen3.5-397B,BrowseCompPlus,ReasoningBank,12.8,15.9
+Nanobot,Qwen3.5-397B,BrowseCompPlus,GEPA,12.8,14.9
+Nanobot,Qwen3.5-397B,BrowseCompPlus,Anchor Skill†,12.8,20.0
+Nanobot,Qwen3.5-397B,LiveCodeBench,Memento,57.8,63.5
+Nanobot,Qwen3.5-397B,LiveCodeBench,ReasoningBank,57.8,64.3
+Nanobot,Qwen3.5-397B,LiveCodeBench,GEPA,57.8,65.1
+Nanobot,Qwen3.5-397B,LiveCodeBench,Anchor Skill†,57.8,69.8
+Nanobot,Qwen3.5-397B,SWE-Bench,Memento,62.5,64.9
+Nanobot,Qwen3.5-397B,SWE-Bench,ReasoningBank,62.5,63.1
+Nanobot,Qwen3.5-397B,SWE-Bench,GEPA,62.5,71.4
+Nanobot,Qwen3.5-397B,SWE-Bench,Anchor Skill†,62.5,79.8
+Nanobot,Qwen3.5-397B,GDPVal,Memento,53.4,52.2
+Nanobot,Qwen3.5-397B,GDPVal,ReasoningBank,53.4,52.5
+Nanobot,Qwen3.5-397B,GDPVal,GEPA,53.4,52.2
+Nanobot,Qwen3.5-397B,GDPVal,Anchor Skill†,53.4,62.0
+OpenClaw,Gemma-4-31B,BrowseCompPlus,Memento,13.3,16.4
+OpenClaw,Gemma-4-31B,BrowseCompPlus,ReasoningBank,13.3,13.3
+OpenClaw,Gemma-4-31B,BrowseCompPlus,GEPA,13.3,17.4
+OpenClaw,Gemma-4-31B,BrowseCompPlus,Anchor Skill†,13.3,17.9
+OpenClaw,Gemma-4-31B,LiveCodeBench,Memento,72.1,67.8
+OpenClaw,Gemma-4-31B,LiveCodeBench,ReasoningBank,72.1,61.2
+OpenClaw,Gemma-4-31B,LiveCodeBench,GEPA,72.1,69.8
+OpenClaw,Gemma-4-31B,LiveCodeBench,Anchor Skill†,72.1,72.5
+OpenClaw,Gemma-4-31B,SWE-Bench,Memento,25.0,20.2
+OpenClaw,Gemma-4-31B,SWE-Bench,ReasoningBank,25.0,31.5
+OpenClaw,Gemma-4-31B,SWE-Bench,GEPA,25.0,42.3
+OpenClaw,Gemma-4-31B,SWE-Bench,Anchor Skill†,25.0,32.7
+OpenClaw,Gemma-4-31B,GDPVal,Memento,44.1,33.2
+OpenClaw,Gemma-4-31B,GDPVal,ReasoningBank,44.1,42.7
+OpenClaw,Gemma-4-31B,GDPVal,GEPA,44.1,44.8
+OpenClaw,Gemma-4-31B,GDPVal,Anchor Skill†,44.1,54.8
+Nanobot,Gemma-4-31B,BrowseCompPlus,Memento,9.2,10.3
+Nanobot,Gemma-4-31B,BrowseCompPlus,ReasoningBank,9.2,4.6
+Nanobot,Gemma-4-31B,BrowseCompPlus,GEPA,9.2,9.7
+Nanobot,Gemma-4-31B,BrowseCompPlus,Anchor Skill†,9.2,12.3
+Nanobot,Gemma-4-31B,LiveCodeBench,Memento,69.0,72.4
+Nanobot,Gemma-4-31B,LiveCodeBench,ReasoningBank,69.0,72.5
+Nanobot,Gemma-4-31B,LiveCodeBench,GEPA,69.0,70.2
+Nanobot,Gemma-4-31B,LiveCodeBench,Anchor Skill†,69.0,73.3
+Nanobot,Gemma-4-31B,SWE-Bench,Memento,17.3,21.4
+Nanobot,Gemma-4-31B,SWE-Bench,ReasoningBank,17.3,24.4
+Nanobot,Gemma-4-31B,SWE-Bench,GEPA,17.3,37.5
+Nanobot,Gemma-4-31B,SWE-Bench,Anchor Skill†,17.3,26.8
+Nanobot,Gemma-4-31B,GDPVal,Memento,43.2,46.2
+Nanobot,Gemma-4-31B,GDPVal,ReasoningBank,43.2,46.5
+Nanobot,Gemma-4-31B,GDPVal,GEPA,43.2,47.9
+Nanobot,Gemma-4-31B,GDPVal,Anchor Skill†,43.2,49.3

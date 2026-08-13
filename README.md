@@ -24,12 +24,12 @@ the website root uses the MIT License, while `benchmark/` uses Apache License 2.
 ## Features
 
 - Interactive leaderboard with filtering and sorting
-- Filter by agent (OpenClaw, Nanobot) and domain (Information Retrieval, Reasoning, Software Engineering, Code Implementation, Knowledge Work)
-- Sort by score with skills, improvement delta, or baseline score
-- Overall aggregation for same agent + model + method combinations
-- Efficiency column showing cost change after skill injection
-- 5 self-evolution methods with GitHub links (EverOS, EvoSkill, Memento, OpenSpace, ReasoningBank)
-- Domain overview table with cluster/train/test statistics
+- Filter by agent (OpenClaw, Nanobot), model, domain, and evolution condition
+- Sort by method score, transfer gain, or Vanilla score
+- Derived Overall across both scaffolds and four equally weighted domains
+- Separate turn-cost table reproducing the paper's All/Solved/Unsolved analysis
+- Paper conditions: Memento, ReasoningBank, GEPA, and Anchor Skill†
+- Domain overview table with Ability/train/test statistics
 
 ## Tech Stack
 
@@ -49,7 +49,7 @@ Open [http://localhost:3000](http://localhost:3000) to view the site.
 
 ## Updating Leaderboard Data
 
-`src/data/leaderboard.csv` is the source of truth for benchmark results. It is converted to `src/data/leaderboard-data.ts` by `scripts/csv-to-data.js`, which runs automatically before `dev` and `build` (or manually via `npm run sync-data`). Edit the CSV, not the generated results in the TS file.
+`src/data/leaderboard.csv` and `src/data/leaderboard-cost.csv` are the sources of truth for the paper's per-cell scores and turn-cost results. Overall leaderboard rows are derived from the per-cell scores by equally weighting both scaffolds and all four domains. The CSV files are converted to `src/data/leaderboard-data.ts` by `scripts/csv-to-data.js`, which runs automatically before `dev` and `build` (or manually via `npm run sync-data`). Edit the CSV files, not the generated result arrays in the TS file.
 
 ## Project Structure
 
@@ -72,9 +72,10 @@ src/
 │   └── ui/                      # shadcn/ui primitives
 └── data/
     ├── leaderboard.csv          # Benchmark results (source of truth)
+    ├── leaderboard-cost.csv     # Turn-cost results (source of truth)
     └── leaderboard-data.ts      # Domain info, method info, generated results
 scripts/
-└── csv-to-data.js               # Syncs leaderboard.csv into leaderboard-data.ts
+└── csv-to-data.js               # Syncs result CSVs into leaderboard-data.ts
 benchmark/                       # Public benchmark runner, adapters, and docs
 ```
 

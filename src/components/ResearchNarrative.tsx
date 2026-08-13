@@ -41,54 +41,42 @@ export function ResearchNarrative() {
         {/* ---- Lessons ---- */}
         <div className="mb-12">
           <h3 className="text-lg font-semibold text-foreground mb-2">
-            Three things to watch out for if you&rsquo;re building one
+          What the experiments show
           </h3>
           <p className="text-sm text-muted-foreground leading-relaxed mb-5">
-            We ran a lot of combinations. If you&rsquo;re working on a
-            self-evolution method, three patterns showed up over and over.
-            They&rsquo;re worth thinking about before you start optimizing.
+            Across two agent scaffolds, three backbones, and four domains, the
+            results expose where current self-evolution systems still break.
           </p>
 
           <div className="space-y-4">
             <NotePoint icon="⚠️">
               <span className="font-semibold text-foreground">
-                The bottleneck is usually <em>what you remember</em>, not{" "}
-                <em>how you search</em>.
+                Ability content transfers across model families.
               </span>{" "}
-              When skills help, it&rsquo;s mostly because what got captured had
-              real structure to it, not because the search step got smarter.
-              Tuning the retriever, swapping rerankers, hybrid search &mdash;
-              none of them make a difference if the stored skills are vague to
-              begin with. Better to spend that energy on{" "}
-              <em>what to write down</em> in the first place.
+              Anchor Skill† improves every scaffold&ndash;backbone&ndash;domain
+              cell even though its construction backbones are disjoint from
+              the evaluation backbones. The procedural content is transferable
+              when it is extracted and routed correctly.
             </NotePoint>
 
             <NotePoint icon="⚠️">
               <span className="font-semibold text-foreground">
-                When different problems look alike but need different methods,
-                search will mislead you.
+                Every automatic method still shows negative transfer.
               </span>{" "}
-              Math is the cleanest example: combinatorics, generating-function
-              problems, and group-theory problems all use words like
-              &ldquo;triangle&rdquo;, &ldquo;vertex&rdquo;,
-              &ldquo;configuration&rdquo;. A search-based system matches on the
-              words, pulls up a skill from a different family, the agent
-              follows it, and a problem it would have gotten right at baseline
-              now gets wrong. The fix isn&rsquo;t a better retriever. It&rsquo;s
-              giving each skill a way to say{" "}
-              <em>&ldquo;I&rsquo;m for this kind of problem&rdquo;</em>.
+              Memento, ReasoningBank, and GEPA each improve some settings, but
+              none remains positive in every cell. One striking mismatch is
+              Memento on Nanobot / Qwen3.5-27B / software engineering, where
+              performance drops by 36.3 points.
             </NotePoint>
 
             <NotePoint icon="⚠️">
               <span className="font-semibold text-foreground">
-                Don&rsquo;t inject by default.
+                Extraction and routing remain the bottleneck.
               </span>{" "}
-              A wrong skill can take a problem the agent would have solved and
-              break it. A missing skill just leaves things where they were. So
-              on tricky domains, the safer default isn&rsquo;t &ldquo;always
-              use a skill&rdquo;, it&rsquo;s &ldquo;use one only when
-              you&rsquo;re sure it fits&rdquo;. Most methods today inject too
-              eagerly.
+              Automatic methods see the same training prompts, trajectories,
+              and verifier outcomes. Their uneven gains therefore point to how
+              reusable content is extracted, indexed, and delivered at test
+              time, not to missing training-side support.
             </NotePoint>
           </div>
         </div>
@@ -119,26 +107,21 @@ export function ResearchNarrative() {
               <span className="font-semibold text-foreground">
                 Training and test tasks are related, not random.
               </span>{" "}
-              For each domain, we grouped problems by what they have in common:
-              jobs (for knowledge work), topics (for web search), repository
-              patterns (for software issues), problem neighborhoods (for code
-              challenges). Then we made sure every test problem has training
-              problems in the same group. That way, if a method doesn&rsquo;t
-              help, you can&rsquo;t blame it on the test being unrelated to
-              anything the agent ever saw.
+              The Ability Graph links tasks through trace-grounded procedural
+              overlap. Every test task has verified support from training-side
+              Abilities, so a failed transfer cannot be dismissed as an
+              unsupported test case.
             </NotePoint>
 
             <NotePoint icon="🔹">
               <span className="font-semibold text-foreground">
                 Every cell on the leaderboard is real.
               </span>{" "}
-              Two agent frameworks, two model sizes, five domains, four
-              self-evolution methods: that&rsquo;s 80 combinations, each
-              measured against the same no-skill baseline. Every cell ran with
-              its method&rsquo;s default settings and the same task, tool, and
-              scoring setup, and we tracked how many turns it took alongside
-              accuracy. No placeholders, no &ldquo;not evaluated under this
-              setting&rdquo; gaps.
+              Two agent frameworks, three backbones, four domains, and four
+              evolution conditions produce 96 method comparisons, all measured
+              against matched Vanilla baselines. Tasks, tools, timeouts,
+              scoring, and base agent configuration are fixed across methods;
+              results are averaged over three independent runs per instance.
             </NotePoint>
           </div>
         </div>

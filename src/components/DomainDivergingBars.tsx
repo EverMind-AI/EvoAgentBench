@@ -17,10 +17,17 @@ type AgentFilter = "All" | Agent;
 type ModelFilter = "All" | string;
 type DomainFilter = "All" | Domain;
 
+const MODEL_ORDER = ["Qwen3.5-27B", "Qwen3.5-397B", "Gemma-4-31B"];
+
+function modelRank(model: string) {
+  const rank = MODEL_ORDER.indexOf(model);
+  return rank === -1 ? MODEL_ORDER.length : rank;
+}
+
 interface PanelRow {
   method: SkillMethod;
-  without: number;
-  withSkills: number;
+  vanilla: number;
+  methodScore: number;
   delta: number;
 }
 
@@ -33,7 +40,6 @@ interface ConfigPanel {
 
 const DOMAIN_ACCENT: Record<Domain, string> = {
   BrowseCompPlus: "bg-emerald-500",
-  OmniMath: "bg-indigo-500",
   "SWE-Bench": "bg-amber-500",
   LiveCodeBench: "bg-sky-500",
   GDPVal: "bg-rose-500",
@@ -58,9 +64,9 @@ function buildPanels(data: LeaderboardEntry[]): ConfigPanel[] {
     }
     groups.get(key)!.rows.push({
       method: e.skillMethod,
-      without: e.without,
-      withSkills: e.withSkills,
-      delta: e.withSkills - e.without,
+      vanilla: e.vanilla,
+      methodScore: e.methodScore,
+      delta: e.methodScore - e.vanilla,
     });
   }
 
@@ -71,7 +77,7 @@ function buildPanels(data: LeaderboardEntry[]): ConfigPanel[] {
   panels.sort((a, b) => {
     const ag = AGENTS.indexOf(a.agent) - AGENTS.indexOf(b.agent);
     if (ag !== 0) return ag;
-    if (a.model !== b.model) return a.model.localeCompare(b.model);
+    if (a.model !== b.model) return modelRank(a.model) - modelRank(b.model);
     return DOMAINS.indexOf(a.domain) - DOMAINS.indexOf(b.domain);
   });
   return panels;
@@ -121,7 +127,7 @@ export function DomainDivergingBars() {
   const allModels = useMemo(() => {
     const s = new Set<string>();
     for (const e of leaderboardData) s.add(e.model);
-    return Array.from(s).sort();
+    return Array.from(s).sort((a, b) => modelRank(a) - modelRank(b));
   }, []);
   // Compact label for filter chips (drop "Qwen3.5-" prefix)
   const modelChip = (m: string) => m.replace(/^Qwen3\.5-/, "");
@@ -161,7 +167,7 @@ export function DomainDivergingBars() {
         </h2>
         <p className="text-sm text-muted-foreground mb-6 max-w-3xl">
           For each (agent, model, domain) cell, methods are sorted by Δ gain
-          (with-skills − without). Baseline pass-rate is shown next to each
+          (method score − Vanilla). The Vanilla score is shown next to each
           method.
         </p>
 
@@ -237,7 +243,7 @@ export function DomainDivergingBars() {
           >
             full leaderboard
           </Link>{" "}
-          for per-cell numbers including cost.
+          for per-cell scores and the paper&rsquo;s turn-cost analysis.
         </p>
       </div>
     </section>
@@ -267,13 +273,13 @@ function ConfigPanelView({
         />
         {panel.agent} · {modelChip(panel.model)}
       </div>
-      {/* tiny column header so the base-rate column is unambiguous */}
+      {/* Tiny column header so the Vanilla column is unambiguous. */}
       <div
         className="grid items-center gap-2 text-[10px] uppercase tracking-wider text-muted-foreground/70 mb-1"
         style={{ gridTemplateColumns: "84px 38px 1fr 38px" }}
       >
         <div className="text-right pr-1">method</div>
-        <div className="text-right">base</div>
+        <div className="text-right">van.</div>
         <div />
         <div className="text-right">Δ</div>
       </div>
@@ -319,7 +325,7 @@ function MethodRow({
           {row.method}
         </div>
         <div className="text-right font-mono text-[11px] text-muted-foreground tabular-nums">
-          {row.without.toFixed(1)}
+          {row.vanilla.toFixed(1)}
         </div>
         <div className="flex h-3.5 items-stretch">
           <div className="flex-1 flex justify-end">
@@ -356,9 +362,9 @@ function MethodRow({
       >
         <span className="font-sans font-semibold">{row.method}</span>
         <span className="mx-2 opacity-50">|</span>
-        base {row.without.toFixed(1)}
+        Vanilla {row.vanilla.toFixed(1)}
         <span className="mx-1.5 opacity-50">→</span>
-        with {row.withSkills.toFixed(1)}
+        method {row.methodScore.toFixed(1)}
         <span className="mx-1.5 opacity-50">|</span>
         <span
           className={

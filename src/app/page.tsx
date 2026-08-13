@@ -17,16 +17,14 @@ export default function Home() {
             EvoAgentBench
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground mx-auto mb-6 italic whitespace-nowrap">
-            A Unified Evaluation Framework for AI Agent Self-Evolution
+            Benchmarking Agent Self-Evolution via Ability Transfer
           </p>
           <p className="text-sm text-muted-foreground max-w-3xl mx-auto mb-10 leading-relaxed">
-            EvoAgentBench enables standardized comparison of agent self-evolution
-            methods — techniques that allow agents to improve their performance
-            by learning from past experience. It provides pluggable abstractions
-            for domains, agents, and skill evaluation methods, making it easy to
-            evaluate how different self-evolution approaches generalize across
-            information retrieval, reasoning, software engineering, code
-            implementation, and knowledge work.
+            EvoAgentBench evaluates whether agents can transfer reusable
+            procedures from past experience to new tasks. Its Ability-guided
+            split covers web research, algorithmic reasoning, software
+            engineering, and knowledge work, with verified training-side
+            support for every test task.
           </p>
           <div className="flex items-center justify-center gap-3 flex-wrap">
             <Link
@@ -58,9 +56,9 @@ export default function Home() {
             <div className="text-2xl mb-3">🌐</div>
             <h3 className="font-semibold text-foreground mb-2">Multi-Domain Evaluation</h3>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              5 diverse evaluation domains — information retrieval, reasoning,
-              software engineering, code implementation, and knowledge work —
-              with clustered train/test splits and unified evaluation pipeline.
+              4 agentic domains — web research, algorithmic reasoning, software
+              engineering, and knowledge work — with 528 training tasks and
+              267 supported test tasks.
             </p>
           </div>
           <div className="rounded-xl border bg-card p-6">
@@ -76,9 +74,9 @@ export default function Home() {
             <div className="text-2xl mb-3">🧬</div>
             <h3 className="font-semibold text-foreground mb-2">Self-Evolution Comparison</h3>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Standardized train → extract → evaluate protocol for comparing
-              skill-based self-evolution methods. Supports both offline
-              (batch extraction) and online (learn-as-you-go) evaluation modes.
+              A standardized train → evolve → evaluate protocol comparing
+              Memento, ReasoningBank, GEPA, and the diagnostic Anchor Skill†
+              reference under matched conditions.
             </p>
           </div>
         </div>

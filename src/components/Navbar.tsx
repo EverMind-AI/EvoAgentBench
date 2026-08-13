@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const CODE_URL = "https://github.com/EverMind-AI/EverOS/tree/main/benchmarks/EvoAgentBench";
+const CODE_URL = "https://github.com/EverMind-AI/EvoAgentBench/tree/main/benchmark";
 const HF_URL = "https://huggingface.co/datasets/EverMind-AI/EvoAgentBench";
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH || "";
 

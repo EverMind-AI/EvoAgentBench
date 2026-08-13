@@ -19,9 +19,9 @@ export function BenchmarkDomains() {
           Evaluation Domains
         </h2>
         <p className="text-muted-foreground mb-10 max-w-2xl">
-          EvoAgentBench builds on existing benchmarks by clustering tasks into
-          domains with train/test splits for self-evolution training and
-          evaluation.
+          EvoAgentBench builds an Ability Graph over four agentic domains and
+          selects a 528/267 train/test split with verified training-side support
+          for every test task.
         </p>
 
         <div className="rounded-lg border overflow-x-auto">
@@ -31,7 +31,9 @@ export function BenchmarkDomains() {
                 <TableHead>Domain</TableHead>
                 <TableHead>Base Benchmark</TableHead>
                 <TableHead>Description</TableHead>
-                <TableHead>Clusters</TableHead>
+                <TableHead className="text-right">Abilities</TableHead>
+                <TableHead className="text-right">Communities</TableHead>
+                <TableHead className="text-right">Abilities / Task</TableHead>
                 <TableHead className="text-right">Train</TableHead>
                 <TableHead className="text-right">Test</TableHead>
               </TableRow>
@@ -55,8 +57,14 @@ export function BenchmarkDomains() {
                     <TableCell className="text-sm text-muted-foreground">
                       {domain.description}
                     </TableCell>
-                    <TableCell className="text-sm whitespace-nowrap">
-                      {domain.clusters}
+                    <TableCell className="text-right font-mono">
+                      {domain.abilities}
+                    </TableCell>
+                    <TableCell className="text-right font-mono">
+                      {domain.communities}
+                    </TableCell>
+                    <TableCell className="text-right font-mono">
+                      {domain.abilitiesPerTask.toFixed(2)}
                     </TableCell>
                     <TableCell className="text-right font-mono font-semibold">
                       {domain.train}

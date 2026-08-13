@@ -1,12 +1,13 @@
 #!/usr/bin/env node
+/* eslint-disable @typescript-eslint/no-require-imports */
 /**
- * Reads leaderboard.csv and updates leaderboard-data.ts.
+ * Reads the paper result CSVs and updates leaderboard-data.ts.
  * Runs automatically as a prebuild step, so you only need to edit the CSV.
  *
  * Manual run: node scripts/csv-to-data.js
  *
  * To add new results:
- * 1. Edit src/data/leaderboard.csv (add/modify rows)
+ * 1. Edit src/data/leaderboard.csv or leaderboard-cost.csv
  * 2. Commit and push — the build will auto-sync the TS file
  */
 
@@ -14,27 +15,45 @@ const fs = require("fs");
 const path = require("path");
 
 const csvPath = path.join(__dirname, "../src/data/leaderboard.csv");
+const costCsvPath = path.join(__dirname, "../src/data/leaderboard-cost.csv");
 const tsPath = path.join(__dirname, "../src/data/leaderboard-data.ts");
 
-const csv = fs.readFileSync(csvPath, "utf-8").replace(/\r/g, "").trim();
-const lines = csv.split("\n");
-const rows = lines.slice(1).map((line) => {
-  const parts = line.split(",");
+function readRows(filePath) {
+  const csv = fs.readFileSync(filePath, "utf-8").replace(/\r/g, "").trim();
+  return csv.split("\n").slice(1).map((line) => line.split(","));
+}
+
+const rows = readRows(csvPath).map((parts) => {
   return {
     agent: parts[0],
     model: parts[1],
     domain: parts[2],
     skillMethod: parts[3],
-    without: parseFloat(parts[4]),
-    withSkills: parseFloat(parts[5]),
-    cost: parts.slice(6).join(","),
+    vanilla: parseFloat(parts[4]),
+    methodScore: parseFloat(parts[5]),
   };
 });
+
+const costRows = readRows(costCsvPath).map((parts) => ({
+  agent: parts[0],
+  model: parts[1],
+  skillMethod: parts[2],
+  all: parseFloat(parts[3]),
+  solved: parseFloat(parts[4]),
+  unsolved: parseFloat(parts[5]),
+}));
 
 const entries = rows
   .map(
     (r) =>
-      `  { agent: "${r.agent}", model: "${r.model}", domain: "${r.domain}", skillMethod: "${r.skillMethod}", without: ${r.without}, withSkills: ${r.withSkills}, cost: "${r.cost}" },`
+      `  { agent: "${r.agent}", model: "${r.model}", domain: "${r.domain}", skillMethod: "${r.skillMethod}", vanilla: ${r.vanilla}, methodScore: ${r.methodScore} },`
+  )
+  .join("\n");
+
+const costEntries = costRows
+  .map(
+    (r) =>
+      `  { agent: "${r.agent}", model: "${r.model}", skillMethod: "${r.skillMethod}", all: ${r.all}, solved: ${r.solved}, unsolved: ${r.unsolved} },`
   )
   .join("\n");
 
@@ -66,6 +85,15 @@ ts = replaceBlock(
   "leaderboardData"
 );
 
+// Replace turnCostData array
+ts = replaceBlock(
+  ts,
+  "export const turnCostData: TurnCostEntry[] = [",
+  "];",
+  `export const turnCostData: TurnCostEntry[] = [\n${costEntries}\n];`,
+  "turnCostData"
+);
+
 // Replace SKILL_METHODS list (derived from unique CSV values)
 ts = replaceBlock(
   ts,
@@ -77,5 +105,5 @@ ts = replaceBlock(
 
 fs.writeFileSync(tsPath, ts);
 console.log(
-  `Synced ${rows.length} entries and ${uniqueMethods.length} skill methods from CSV.`
+  `Synced ${rows.length} scores, ${costRows.length} cost rows, and ${uniqueMethods.length} methods from CSV.`
 );

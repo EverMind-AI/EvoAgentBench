@@ -7,7 +7,7 @@ const APPROACH_COLORS: Record<string, { bg: string; text: string }> = {
   "Continuous accumulation": { bg: "#fef3c7", text: "#92400e" },
   "Memory + reasoning": { bg: "#fef9c3", text: "#713f12" },
   "Prompt evolution": { bg: "#ede9fe", text: "#5b21b6" },
-  "Expert-crafted": { bg: "#e0f2fe", text: "#0369a1" },
+  "Diagnostic reference": { bg: "#e0f2fe", text: "#0369a1" },
 };
 
 export function SkillMethods() {
@@ -18,13 +18,13 @@ export function SkillMethods() {
           05 — SELF-EVOLUTION
         </p>
         <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-          Skill Extraction Methods
+          Evolution Conditions
         </h2>
         <p className="text-muted-foreground mb-10 max-w-2xl">
           EvoAgentBench provides a standardized protocol for evaluating agent
           self-evolution methods — techniques that let agents learn from past
-          experience and improve future performance. {ALL_METHODS.length}{" "}
-          methods are currently integrated.
+          experience and improve future performance. The paper evaluates three
+          automatic methods plus Anchor Skill†, a diagnostic reference.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
